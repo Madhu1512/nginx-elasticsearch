@@ -16,9 +16,8 @@ RUN yum update -y && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
-ADD etc/supervisord.conf /etc/supervisord.conf
-ADD etc/supervisord.conf.d /etc/supervisord.conf.d/
-ADD etc/nginx.conf /etc/nginx/nginx.conf
-ADD etc/default.conf /etc/nginx/conf.d/default.conf
+ADD supervisord.conf /etc/supervisord.conf
+ADD nginx.conf /etc/nginx/nginx.conf
+ADD default.conf /etc/nginx/conf.d/default.conf
 
 ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
